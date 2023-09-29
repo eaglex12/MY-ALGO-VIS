@@ -46,7 +46,7 @@ const Footer = () => {
           <button type="submit">Send</button>
         </form>
       </div>
-      <p>&copy; Your Name</p>
+      <p>&copy; DIVYANSH SINGH RATHORE</p>
     </footer>
   );
 };
