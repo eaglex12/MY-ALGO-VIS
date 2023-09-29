@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon index.js",
-    "build":"npm i",
     "start":"node index.js",
     "test":"echo \"Error : no test specifield \" && exit 1"
   },
