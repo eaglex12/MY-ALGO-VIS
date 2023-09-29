@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build":"npm i",
     "start":"node index.js",
     "test":"echo \"Error : no test specifield \" && exit 1"
+    
   },
   "keywords": [],
   "author": "",
