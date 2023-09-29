@@ -1,0 +1,78 @@
+.data-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .bar {
+    width: 20px;
+    margin: 1px 1px;
+    background-color: #007bff;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .bar__id {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+  }
+  
+  .unsorted {
+    background-color: #007bff;
+  }
+  
+  .compared {
+    background-color: darkblue;
+  }
+  
+  .sorted {
+    background-color: lightgreen;
+  }
+  
+  .active {
+    background-color: #13ce66; /* Green color for active traversal */
+  }
+  
+  .moved-back {
+    background-color: darkblue; /* Dark blue color for moved back element */
+  }
+  
+  .moving-back-label {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: darkblue;
+    font-weight: bold;
+  }
+  
+  .selected-element-info {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: darkblue;
+  }
+  
+  .buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .buttons button {
+    margin: 5px;
+  }
+  
+  .current-key-height {
+    text-align: center;
+  position: fixed;
+  bottom: 317px; /* Adjust the value to your preference */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(185, 185, 194);
+  }
+  

@@ -1,0 +1,79 @@
+.home-container {
+    text-align: center;
+  }
+  
+  .algorithm-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .algorithm-box {
+    border: 2px solid #ccc;
+    padding: 30px;
+    margin: 20px;
+    max-width: 350px;
+    text-decoration: none;
+    color: black;
+    transition: transform 0.2s;
+  }
+  
+  .algorithm-box img {
+    max-width: 100%;
+    max-height: 150px;
+    margin-top: 10px;
+    transition: transform 0.2s;
+  }
+
+  
+.algorithm-box h3 {
+  color: white; /* Set heading color to white */
+  margin-bottom: 10px;
+}
+
+  
+  .algorithm-box:hover {
+    transform: scale(1.05);
+  }
+  
+  .algorithm-box:hover img {
+    transform: scale(1.1);
+  }
+  .algorithm-box p {
+    color: white; /* Set the description text color to white */
+}
+  
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .content {
+    margin-top: 10px;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+  }
+  
+  .navbar-clock {
+    margin-left: auto;
+    margin-right: 20px; /* Adjust the margin as needed */
+    font-size: 24px;
+    color: #e836d3; /* Adjust the color as needed */
+  }
+  

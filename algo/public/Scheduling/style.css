@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    color:#bc94ef;
+}
+
+body {
+    margin: 10px 20px;
+    font-family: 'OpenSans', sans-serif;
+}
+
+
+.instructions {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    font-size: 14px;
+    margin: 20px auto; /* Center the content horizontally */
+    text-align: left; /* Align text to the left */
+    max-width: 500px; /* Set a maximum width for the content */
+} 
+
+h1 ,h3{
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+
+    font-size: 26px;
+    margin-bottom: 20px; /* Add spacing after the heading */
+
+}
+
+table,
+th,
+td {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    border-collapse: collapse;
+    text-align: center;
+    border: 2px solid rgb(159, 124, 124);
+}
+
+td {
+    color:red;
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    padding: 0 2px;
+}
+
+
+
+table input {
+    color:red;
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    text-align: center;
+    border: none;
+    width: 100px;
+    background-color: transparent;
+    
+}
+
+.process-btn button {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    height: 20px;
+    width: 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+button {
+    background-color: transparent;
+    color: burlywood;
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    padding: 5px;
+}
+
+thead {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    font-weight: bold;
+}
+
+/* Add more specific selectors to avoid conflicting styles */
+#header > div,
+#footer > div {
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Add more specific selectors for logo */
+#header .logo a {
+    background: url(./images/55191.png) no-repeat center top;
+    color: #000;
+    display: block;
+    font: 15px/30px 'Play';
+    height: 20px;
+    width: 76px;
+    padding-top: 68px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Add more specific selectors for navigation */
+#navigation li {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    float: left;
+    width: 160px;
+    text-align: center;
+}
+
+#navigation li a {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    color: #818181;
+    font-size: 15px;
+    line-height: 30px;
+    text-decoration: none;
+}
+
+#navigation li a:hover {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    color: #000;
+}
+
+#navigation li.active a {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    color: #f99600;
+}
+
+.center-segment {
+    position: relative;
+    z-index: 3; /* Add a higher z-index to the content */
+    text-align: center;
+    margin-top: 50px; /* Adjust the margin as needed */
+}
+
+
+.bgAnimation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    background: #1d1d1d;
+    filter: saturate(2);
+    overflow: hidden;
+}
+.colorBox{
+    z-index: 2;
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background: #1d1d1d;
+}
+
+.colorBox:hover{
+    background: #00bfff;
+    transition-duration: 0s;
+}
+
+
+.backgroundAmim{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #00bfff;
+    filter: blur(60px);
+    animation: animBack 6s linear infinite;
+}
+
+@keyframes animBack {
+    0%{
+        top: -60px;
+    }
+    100%{
+        top: 120%;
+    }
+}

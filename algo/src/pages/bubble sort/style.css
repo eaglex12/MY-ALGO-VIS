@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  
+  
+  .header {
+    font-size: 35px;
+    text-align: center;
+  }
+  
+  #array {
+    background-color: transparent;
+    height: 305px;
+    width: 598px;
+    margin: auto;
+    position: relative;
+    margin-top: 64px;
+  }
+  
+  .block {
+    width: 28px;
+    background-color: #6b5b95;
+    position: absolute;
+    bottom: 0px;
+    transition: 0.2s all ease;
+  }
+  
+  .block_id {
+    position: absolute;
+    color: black;
+    margin-top: -20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .block.active {
+    background-color: #ff4949; /* Highlight color */
+  }
+  
+  .block.done {
+    background-color: #13ce66; /* Color for sorted bars */
+  }
+  
+  .block.max {
+    background-color: #13ce66; /* Green color for maximum element */
+  }
+  
