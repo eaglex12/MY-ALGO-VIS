@@ -15,7 +15,7 @@ const Footer = () => {
     const email = formData.get('email');
     const message = formData.get('message');
   
-    fetch('https://algoo-vis.onrender.com', {
+    fetch('https://algoo-vis.onrender.com/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
