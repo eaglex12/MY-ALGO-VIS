@@ -36,5 +36,7 @@ This is a React-based website designed to serve as a visualization platform for 
 
 ## Hosting and Backend Information
 
-The site is hosted on Netlify and can be accessed via this link.
-The backend is implemented using Node.js, and a mailer service is used to receive feedback from users.
+## Hosting and Backend Information
+
+- **Hosting:** The site is hosted on Netlify and can be accessed via [this link](https://algo-vizzz.netlify.app/).
+- **Backend:** Implemented using Node.js, with a mailer service integrated for receiving user feedback.
