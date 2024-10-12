@@ -38,5 +38,5 @@ This is a React-based website designed to serve as a visualization platform for 
 
 ## Hosting and Backend Information
 
-- **Hosting:** The site is hosted on Netlify and can be accessed via [this link](https://algo-vizzz.netlify.app/).
+- **Hosting:** The site is hosted on Netlify and can be accessed via [this link](https://rainbow-phoenix-d7aa76.netlify.app/).
 - **Backend:** Implemented using Node.js, with a mailer service integrated for receiving user feedback.
