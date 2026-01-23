@@ -7,6 +7,7 @@ import TernarySearch from "./pages/ternarysearch/script";
 import BubbleSort from "./pages/bubble sort/script";
 import QuickSort from "./pages/Quick sort/script";
 import InsertionSort from "./pages/insertion sort/script";
+import { FCFS, SJF, RoundRobin } from "./pages/scheduling";
 import "./App.css"; // We'll create this file for the background styles
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 						<Route path="/bubble-sort" element={<BubbleSort />} />
 						<Route path="/quick-sort" element={<QuickSort />} />
 						<Route path="/insert-sort" element={<InsertionSort />} />
+						{/* Scheduling Algorithms */}
+						<Route path="/scheduling/fcfs" element={<FCFS />} />
+						<Route path="/scheduling/sjf" element={<SJF />} />
+						<Route path="/scheduling/round-robin" element={<RoundRobin />} />
 					</Routes>
 				</div>
 			</div>
