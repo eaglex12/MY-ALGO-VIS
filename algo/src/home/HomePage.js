@@ -1,7 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { 
+	FaSearch, 
+	FaSort, 
+	FaCalendarAlt, 
+	FaGithub, 
+	FaTwitter, 
+	FaFacebook,
+	FaCode,
+	FaRocket
+} from "react-icons/fa";
 
 const HomePage = () => {
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 20);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	useEffect(() => {
 		const scrollToElement = (id) => {
 			const element = document.getElementById(id);
@@ -19,160 +39,335 @@ const HomePage = () => {
 		});
 	}, []);
 
-	const AlgorithmBox = ({ to, imgSrc, alt, heading, description }) => (
+	const AlgorithmBox = ({ to, imgSrc, alt, heading, description, icon: Icon, delay = 0 }) => (
 		<Link
 			to={to}
-			className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105"
+			className="group relative flex flex-col bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 animate-fade-in"
+			style={{ animationDelay: `${delay}ms` }}
 		>
-			<img src={imgSrc} alt={alt} className="w-full h-48 object-cover" />
-			<div className="p-4">
-				<h3 className="text-xl font-semibold mb-2">{heading}</h3>
-				<hr className="mb-2" />
-				<p className="text-gray-600">{description}</p>
+			<div className="relative h-56 overflow-hidden">
+				<img 
+					src={imgSrc} 
+					alt={alt} 
+					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+				{Icon && (
+					<div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+						<Icon className="text-blue-600 text-xl" />
+					</div>
+				)}
+			</div>
+			<div className="p-6 flex-1 flex flex-col">
+				<h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+					{heading}
+				</h3>
+				<div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+				<p className="text-gray-600 leading-relaxed flex-1">{description}</p>
+				<div className="mt-4 text-blue-600 font-semibold flex items-center gap-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+					Explore <FaRocket className="text-sm" />
+				</div>
 			</div>
 		</Link>
 	);
 
+	const ExternalAlgorithmBox = ({ href, imgSrc, alt, heading, description, icon: Icon, delay = 0 }) => (
+		<a
+			href={href}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="group relative flex flex-col bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 animate-fade-in"
+			style={{ animationDelay: `${delay}ms` }}
+		>
+			<div className="relative h-56 overflow-hidden">
+				<img 
+					src={imgSrc} 
+					alt={alt} 
+					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+				{Icon && (
+					<div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+						<Icon className="text-blue-600 text-xl" />
+					</div>
+				)}
+			</div>
+			<div className="p-6 flex-1 flex flex-col">
+				<h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+					{heading}
+				</h3>
+				<div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+				<p className="text-gray-600 leading-relaxed flex-1">{description}</p>
+				<div className="mt-4 text-blue-600 font-semibold flex items-center gap-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+					Explore <FaRocket className="text-sm" />
+				</div>
+			</div>
+		</a>
+	);
+
 	return (
-		<div className="min-h-screen bg-gray-100">
-			<nav className="bg-blue-600 text-white shadow-md">
-				<div className="container mx-auto px-4 py-3 flex justify-between items-center">
-					<h1 className="text-2xl font-bold">Algorithm Visualizer</h1>
-					<div className="space-x-4">
+		<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+			{/* Animated Background Elements */}
+			<div className="fixed inset-0 overflow-hidden pointer-events-none">
+				<div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
+				<div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+				<div className="absolute top-1/2 left-1/2 w-64 h-64 bg-indigo-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+			</div>
+
+			{/* Navigation */}
+			<nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+				scrolled 
+					? 'bg-white/80 backdrop-blur-md shadow-lg' 
+					: 'bg-transparent'
+			}`}>
+				<div className="container mx-auto px-6 py-4 flex justify-between items-center">
+					<Link to="/" className="flex items-center gap-3 group">
+						<div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-xl shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+							<FaCode className="text-white text-xl" />
+						</div>
+						<h1 className={`text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent transition-all duration-300 ${
+							scrolled ? 'text-gray-800' : ''
+						}`}>
+							Algorithm Visualizer
+						</h1>
+					</Link>
+					<div className="hidden md:flex space-x-2">
 						<Link
 							to="/linear-search"
-							className="nav-link relative inline-block px-2 py-1"
+							className="relative px-4 py-2 text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-300 group"
 						>
-							<span className="relative z-10">Linear</span>
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+							<span className="relative z-10">Linear Search</span>
+							<span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full rounded-full" />
 						</Link>
 						<Link
 							to="/binary-search"
-							className="nav-link relative inline-block px-2 py-1"
+							className="relative px-4 py-2 text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-300 group"
 						>
-							<span className="relative z-10">Binary</span>
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+							<span className="relative z-10">Binary Search</span>
+							<span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full rounded-full" />
 						</Link>
 						<Link
 							to="/ternary-search"
-							className="nav-link relative inline-block px-2 py-1"
+							className="relative px-4 py-2 text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-300 group"
 						>
-							<span className="relative z-10">Ternary</span>
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+							<span className="relative z-10">Ternary Search</span>
+							<span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full rounded-full" />
 						</Link>
 					</div>
 				</div>
 			</nav>
 
-			<div className="container mx-auto px-4 py-8">
-				<h2 className="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">
-					Search Algorithms
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-					<AlgorithmBox
-						to="/linear-search"
-						imgSrc="ls.png"
-						alt="Linear Search"
-						heading="Linear Search"
-						description="Sequential element checking in a list until the desired element is found or the end is reached."
-					/>
-					<AlgorithmBox
-						to="/binary-search"
-						imgSrc="bs.png"
-						alt="Binary Search"
-						heading="Binary Search"
-						description="Fast searching by repeatedly dividing the search space in half."
-					/>
-					<AlgorithmBox
-						to="/ternary-search"
-						imgSrc="ts.jpg"
-						alt="Ternary Search"
-						heading="Ternary Search"
-						description="Improved binary search that divides the array into three parts for efficient searching."
-					/>
+			{/* Hero Section */}
+			<section className="relative pt-32 pb-20 px-6">
+				<div className="container mx-auto text-center">
+					<div className="inline-block mb-4 px-4 py-2 bg-blue-100/80 backdrop-blur-sm rounded-full border border-blue-200">
+						<span className="text-blue-700 font-semibold text-sm">Interactive Learning Platform</span>
+					</div>
+					<h2 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
+						Master Algorithms
+						<br />
+						<span className="text-4xl md:text-6xl">Through Visualization</span>
+					</h2>
+					<p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+						Explore complex algorithms with interactive visualizations. Understand how search and sort algorithms work step by step.
+					</p>
+					<div className="flex flex-wrap justify-center gap-4">
+						<Link
+							to="/linear-search"
+							className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+						>
+							<FaRocket /> Get Started
+						</Link>
+						<a
+							href="#algorithms"
+							className="px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-700 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-200"
+						>
+							Explore Algorithms
+						</a>
+					</div>
 				</div>
+			</section>
 
-				<h2 className="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">
-					Sort Algorithms
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-					<AlgorithmBox
-						to="/bubble-sort"
-						imgSrc="bubble.png"
-						alt="Bubble Sort"
-						heading="Bubble Sort"
-						description="Simple sorting by repeatedly stepping through the list, comparing and swapping adjacent elements."
-					/>
-					<AlgorithmBox
-						to="/quick-sort"
-						imgSrc="qs.webp"
-						alt="Quick Sort"
-						heading="Quick Sort"
-						description="Efficient sorting by dividing the input array into smaller sub-arrays and recursively sorting them."
-					/>
-					<AlgorithmBox
-						to="/insert-sort"
-						imgSrc="is.jpg"
-						alt="Insertion Sort"
-						heading="Insertion Sort"
-						description="Simple sorting that builds the final sorted array one item at a time."
-					/>
-				</div>
-
-				<h2 className="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">
-					Other Algorithms
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-					<a
-						href={process.env.PUBLIC_URL + "/Scheduling/algo.html"}
-						className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<img
-							src="sched.jpg"
-							alt="Scheduler"
-							className="w-full h-48 object-cover"
-						/>
-						<div className="p-4">
-							<h3 className="text-xl font-semibold mb-2">Scheduler</h3>
-							<hr className="mb-2" />
-							<p className="text-gray-600">
-								Efficient task scheduling and resource allocation algorithm.
-							</p>
+			{/* Algorithms Section */}
+			<div id="algorithms" className="relative container mx-auto px-6 py-16">
+				{/* Search Algorithms */}
+				<div className="mb-20">
+					<div className="flex items-center gap-4 mb-8">
+						<div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
+							<FaSearch className="text-white text-2xl" />
 						</div>
-					</a>
+						<h2 className="text-4xl font-bold text-gray-800">
+							Search Algorithms
+						</h2>
+						<div className="flex-1 h-1 bg-gradient-to-r from-blue-500 to-transparent rounded-full" />
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<AlgorithmBox
+							to="/linear-search"
+							imgSrc="ls.png"
+							alt="Linear Search"
+							heading="Linear Search"
+							description="Sequential element checking in a list until the desired element is found or the end is reached. Perfect for understanding basic search concepts."
+							icon={FaSearch}
+							delay={0}
+						/>
+						<AlgorithmBox
+							to="/binary-search"
+							imgSrc="bs.png"
+							alt="Binary Search"
+							heading="Binary Search"
+							description="Fast searching by repeatedly dividing the search space in half. Learn the power of divide and conquer approach."
+							icon={FaSearch}
+							delay={100}
+						/>
+						<AlgorithmBox
+							to="/ternary-search"
+							imgSrc="ts.jpg"
+							alt="Ternary Search"
+							heading="Ternary Search"
+							description="Improved binary search that divides the array into three parts for efficient searching. Advanced optimization technique."
+							icon={FaSearch}
+							delay={200}
+						/>
+					</div>
+				</div>
+
+				{/* Sort Algorithms */}
+				<div className="mb-20">
+					<div className="flex items-center gap-4 mb-8">
+						<div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg">
+							<FaSort className="text-white text-2xl" />
+						</div>
+						<h2 className="text-4xl font-bold text-gray-800">
+							Sort Algorithms
+						</h2>
+						<div className="flex-1 h-1 bg-gradient-to-r from-purple-500 to-transparent rounded-full" />
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<AlgorithmBox
+							to="/bubble-sort"
+							imgSrc="bubble.png"
+							alt="Bubble Sort"
+							heading="Bubble Sort"
+							description="Simple sorting by repeatedly stepping through the list, comparing and swapping adjacent elements. Great for beginners."
+							icon={FaSort}
+							delay={0}
+						/>
+						<AlgorithmBox
+							to="/quick-sort"
+							imgSrc="qs.webp"
+							alt="Quick Sort"
+							heading="Quick Sort"
+							description="Efficient sorting by dividing the input array into smaller sub-arrays and recursively sorting them. Industry standard algorithm."
+							icon={FaSort}
+							delay={100}
+						/>
+						<AlgorithmBox
+							to="/insert-sort"
+							imgSrc="is.jpg"
+							alt="Insertion Sort"
+							heading="Insertion Sort"
+							description="Simple sorting that builds the final sorted array one item at a time. Efficient for small datasets."
+							icon={FaSort}
+							delay={200}
+						/>
+					</div>
+				</div>
+
+				{/* Other Algorithms */}
+				<div>
+					<div className="flex items-center gap-4 mb-8">
+						<div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg">
+							<FaCalendarAlt className="text-white text-2xl" />
+						</div>
+						<h2 className="text-4xl font-bold text-gray-800">
+							Other Algorithms
+						</h2>
+						<div className="flex-1 h-1 bg-gradient-to-r from-indigo-500 to-transparent rounded-full" />
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<ExternalAlgorithmBox
+							href={process.env.PUBLIC_URL + "/Scheduling/algo.html"}
+							imgSrc="sched.jpg"
+							alt="Scheduler"
+							heading="Scheduler"
+							description="Efficient task scheduling and resource allocation algorithm. Optimize your workflow with advanced scheduling techniques."
+							icon={FaCalendarAlt}
+							delay={0}
+						/>
+					</div>
 				</div>
 			</div>
 
-			<footer className="bg-gray-800 text-white py-6">
-				<div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-					<p>&copy; 2023 Algorithm Visualizer. All rights reserved.</p>
-					<div className="social-links mt-4 md:mt-0 space-x-4">
-						<a
-							href="#"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="hover:text-blue-400 transition-colors duration-300"
-						>
-							Facebook
-						</a>
-						<a
-							href="#"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="hover:text-blue-400 transition-colors duration-300"
-						>
-							Twitter
-						</a>
-						<a
-							href="#"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="hover:text-blue-400 transition-colors duration-300"
-						>
-							GitHub
-						</a>
+			{/* Footer */}
+			<footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-20">
+				<div className="container mx-auto px-6">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+						<div>
+							<div className="flex items-center gap-3 mb-4">
+								<div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-xl">
+									<FaCode className="text-white text-xl" />
+								</div>
+								<h3 className="text-2xl font-bold">Algorithm Visualizer</h3>
+							</div>
+							<p className="text-gray-400 leading-relaxed">
+								Learn algorithms through interactive visualizations. Master the fundamentals of computer science.
+							</p>
+						</div>
+						<div>
+							<h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+							<ul className="space-y-2">
+								<li>
+									<Link to="/linear-search" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Linear Search
+									</Link>
+								</li>
+								<li>
+									<Link to="/binary-search" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Binary Search
+									</Link>
+								</li>
+								<li>
+									<Link to="/quick-sort" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Quick Sort
+									</Link>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h4 className="text-lg font-semibold mb-4">Connect</h4>
+							<div className="social-links flex gap-4">
+								<a
+									href="#"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="p-3 bg-gray-700/50 hover:bg-blue-600 rounded-lg transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+								>
+									<FaFacebook className="text-xl" />
+								</a>
+								<a
+									href="#"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="p-3 bg-gray-700/50 hover:bg-blue-400 rounded-lg transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+								>
+									<FaTwitter className="text-xl" />
+								</a>
+								<a
+									href="#"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="p-3 bg-gray-700/50 hover:bg-gray-600 rounded-lg transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+								>
+									<FaGithub className="text-xl" />
+								</a>
+							</div>
+						</div>
+					</div>
+					<div className="border-t border-gray-700 pt-8 text-center">
+						<p className="text-gray-400">
+							&copy; {new Date().getFullYear()} Algorithm Visualizer. All rights reserved.
+						</p>
 					</div>
 				</div>
 			</footer>
