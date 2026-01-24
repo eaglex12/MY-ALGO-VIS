@@ -38,5 +38,5 @@ This is a React-based website designed to serve as a visualization platform for 
 
 ## Hosting and Backend Information
 
-- **Hosting:** The site is hosted on Netlify and can be accessed via [this link](https://rainbow-phoenix-d7aa76.netlify.app/).
+- **Hosting:** The site is hosted on Netlify and can be accessed via [this link](https://vocal-cassata-6ee11f.netlify.app/).
 - **Backend:** Implemented using Node.js, with a mailer service integrated for receiving user feedback.
