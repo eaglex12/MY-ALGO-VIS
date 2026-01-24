@@ -4,6 +4,7 @@ import {
 	FaSearch, 
 	FaSort, 
 	FaCalendarAlt, 
+	FaClock,
 	FaGithub, 
 	FaTwitter, 
 	FaFacebook,
@@ -153,6 +154,13 @@ const HomePage = () => {
 							<span className="relative z-10">Ternary Search</span>
 							<span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full rounded-full" />
 						</Link>
+						<Link
+							to="/scheduling/fcfs"
+							className="relative px-4 py-2 text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-300 group"
+						>
+							<span className="relative z-10">Scheduling</span>
+							<span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full rounded-full" />
+						</Link>
 					</div>
 				</div>
 			</nav>
@@ -274,6 +282,102 @@ const HomePage = () => {
 					</div>
 				</div>
 
+				{/* Scheduling Algorithms */}
+				<div id="scheduling" className="mb-20">
+					<div className="flex items-center gap-4 mb-8">
+						<div className="p-3 bg-gradient-to-br from-teal-500 to-indigo-600 rounded-xl shadow-lg">
+							<FaClock className="text-white text-2xl" />
+						</div>
+						<h2 className="text-4xl font-bold text-gray-800">
+							Scheduling Algorithms
+						</h2>
+						<div className="flex-1 h-1 bg-gradient-to-r from-teal-500 to-transparent rounded-full" />
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<AlgorithmBox
+							to="/scheduling/fcfs"
+							imgSrc="FCFS.webp"
+							alt="FCFS"
+							heading="FCFS"
+							description="First Come First Serve: executes processes in arrival order. Simple non-preemptive scheduling that uses a FIFO queue."
+							icon={FaClock}
+							delay={0}
+						/>
+						<AlgorithmBox
+							to="/scheduling/sjf"
+							imgSrc="SJF.webp"
+							alt="SJF"
+							heading="SJF"
+							description="Shortest Job First: selects the process with smallest burst time. Minimizes average waiting time, non-preemptive."
+							icon={FaClock}
+							delay={100}
+						/>
+						<AlgorithmBox
+							to="/scheduling/round-robin"
+							imgSrc="RRS.webp"
+							alt="Round Robin"
+							heading="Round Robin"
+							description="Preemptive scheduling with a fixed time quantum. Fair CPU allocation—each process gets equal time slices. Prevents starvation."
+							icon={FaClock}
+							delay={200}
+						/>
+						<AlgorithmBox
+							to="/scheduling/ljf"
+							imgSrc="sched.jpg"
+							alt="LJF"
+							heading="LJF"
+							description="Longest Job First: selects the process with largest burst time. Non-preemptive. Opposite of SJF; can increase waiting time for shorter jobs."
+							icon={FaClock}
+							delay={300}
+						/>
+						<AlgorithmBox
+							to="/scheduling/srtf"
+							imgSrc="sched.jpg"
+							alt="SRTF"
+							heading="SRTF"
+							description="Shortest Remaining Time First: preemptive SJF. Runs the job with smallest remaining burst; preempts when a shorter job arrives. Can minimize average wait."
+							icon={FaClock}
+							delay={400}
+						/>
+						<AlgorithmBox
+							to="/scheduling/lrtf"
+							imgSrc="sched.jpg"
+							alt="LRTF"
+							heading="LRTF"
+							description="Longest Remaining Time First: preemptive LJF. Runs the job with largest remaining burst; can preempt when a longer job arrives."
+							icon={FaClock}
+							delay={500}
+						/>
+						<AlgorithmBox
+							to="/scheduling/hrrn"
+							imgSrc="sched.jpg"
+							alt="HRRN"
+							heading="HRRN"
+							description="Highest Response Ratio Next: RR = 1 + (Wait / Service). Picks the process with highest ratio; balances short jobs and prevents starvation. Non-preemptive."
+							icon={FaClock}
+							delay={600}
+						/>
+						<AlgorithmBox
+							to="/scheduling/priority-nonpreemptive"
+							imgSrc="sched.jpg"
+							alt="Priority (Non-Preemptive)"
+							heading="Priority (Non-Preemptive)"
+							description="Runs the highest-priority process to completion. Each process has a priority; you choose if 1 is high or low. Non-preemptive."
+							icon={FaClock}
+							delay={700}
+						/>
+						<AlgorithmBox
+							to="/scheduling/priority-preemptive"
+							imgSrc="sched.jpg"
+							alt="Priority (Preemptive)"
+							heading="Priority (Preemptive)"
+							description="Same as Priority Non-Preemptive but the running job can be preempted when a higher-priority process arrives. Preemptive."
+							icon={FaClock}
+							delay={800}
+						/>
+					</div>
+				</div>
+
 				{/* Other Algorithms */}
 				<div>
 					<div className="flex items-center gap-4 mb-8">
@@ -289,9 +393,9 @@ const HomePage = () => {
 						<ExternalAlgorithmBox
 							href={process.env.PUBLIC_URL + "/Scheduling/algo.html"}
 							imgSrc="sched.jpg"
-							alt="Scheduler"
-							heading="Scheduler"
-							description="Efficient task scheduling and resource allocation algorithm. Optimize your workflow with advanced scheduling techniques."
+							alt="Scheduler (Legacy)"
+							heading="Scheduler (Legacy)"
+							description="Full scheduling suite with FCFS, SJF, SRTF, Round Robin, Priority, HRRN and more. Opens in new tab."
 							icon={FaCalendarAlt}
 							delay={0}
 						/>
@@ -330,6 +434,36 @@ const HomePage = () => {
 								<li>
 									<Link to="/quick-sort" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
 										Quick Sort
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/fcfs" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										FCFS Scheduling
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/round-robin" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Round Robin
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/srtf" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										SRTF
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/hrrn" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										HRRN
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/priority-nonpreemptive" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Priority (Non-Preemptive)
+									</Link>
+								</li>
+								<li>
+									<Link to="/scheduling/priority-preemptive" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+										Priority (Preemptive)
 									</Link>
 								</li>
 							</ul>

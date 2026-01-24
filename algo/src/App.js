@@ -7,7 +7,7 @@ import TernarySearch from "./pages/ternarysearch/script";
 import BubbleSort from "./pages/bubble sort/script";
 import QuickSort from "./pages/Quick sort/script";
 import InsertionSort from "./pages/insertion sort/script";
-import { FCFS, SJF, RoundRobin } from "./pages/scheduling";
+import { FCFS, SJF, LJF, SRTF, LRTF, HRRN, PriorityNonPreemptive, PriorityPreemptive, RoundRobin } from "./pages/scheduling";
 import "./App.css"; // We'll create this file for the background styles
 
 function App() {
@@ -27,6 +27,12 @@ function App() {
 						{/* Scheduling Algorithms */}
 						<Route path="/scheduling/fcfs" element={<FCFS />} />
 						<Route path="/scheduling/sjf" element={<SJF />} />
+						<Route path="/scheduling/ljf" element={<LJF />} />
+						<Route path="/scheduling/srtf" element={<SRTF />} />
+						<Route path="/scheduling/lrtf" element={<LRTF />} />
+						<Route path="/scheduling/hrrn" element={<HRRN />} />
+						<Route path="/scheduling/priority-nonpreemptive" element={<PriorityNonPreemptive />} />
+						<Route path="/scheduling/priority-preemptive" element={<PriorityPreemptive />} />
 						<Route path="/scheduling/round-robin" element={<RoundRobin />} />
 					</Routes>
 				</div>
