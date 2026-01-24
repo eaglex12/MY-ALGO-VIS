@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { 
 	FaSearch, 
 	FaSort, 
-	FaCalendarAlt, 
 	FaClock,
 	FaGithub, 
 	FaTwitter, 
@@ -70,40 +69,6 @@ const HomePage = () => {
 				</div>
 			</div>
 		</Link>
-	);
-
-	const ExternalAlgorithmBox = ({ href, imgSrc, alt, heading, description, icon: Icon, delay = 0 }) => (
-		<a
-			href={href}
-			target="_blank"
-			rel="noopener noreferrer"
-			className="group relative flex flex-col bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 animate-fade-in"
-			style={{ animationDelay: `${delay}ms` }}
-		>
-			<div className="relative h-56 overflow-hidden">
-				<img 
-					src={imgSrc} 
-					alt={alt} 
-					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-				{Icon && (
-					<div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-						<Icon className="text-blue-600 text-xl" />
-					</div>
-				)}
-			</div>
-			<div className="p-6 flex-1 flex flex-col">
-				<h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-					{heading}
-				</h3>
-				<div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-				<p className="text-gray-600 leading-relaxed flex-1">{description}</p>
-				<div className="mt-4 text-blue-600 font-semibold flex items-center gap-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-					Explore <FaRocket className="text-sm" />
-				</div>
-			</div>
-		</a>
 	);
 
 	return (
@@ -374,30 +339,6 @@ const HomePage = () => {
 							description="Same as Priority Non-Preemptive but the running job can be preempted when a higher-priority process arrives. Preemptive."
 							icon={FaClock}
 							delay={800}
-						/>
-					</div>
-				</div>
-
-				{/* Other Algorithms */}
-				<div>
-					<div className="flex items-center gap-4 mb-8">
-						<div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg">
-							<FaCalendarAlt className="text-white text-2xl" />
-						</div>
-						<h2 className="text-4xl font-bold text-gray-800">
-							Other Algorithms
-						</h2>
-						<div className="flex-1 h-1 bg-gradient-to-r from-indigo-500 to-transparent rounded-full" />
-					</div>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<ExternalAlgorithmBox
-							href={process.env.PUBLIC_URL + "/Scheduling/algo.html"}
-							imgSrc="sched.jpg"
-							alt="Scheduler (Legacy)"
-							heading="Scheduler (Legacy)"
-							description="Full scheduling suite with FCFS, SJF, SRTF, Round Robin, Priority, HRRN and more. Opens in new tab."
-							icon={FaCalendarAlt}
-							delay={0}
 						/>
 					</div>
 				</div>
